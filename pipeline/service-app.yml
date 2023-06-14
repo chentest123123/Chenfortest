@@ -6,7 +6,7 @@ metadata:
 spec:
   selector:
     app: python-app 
-  type: LoadBalancer
+  type: ClusterIP
   ports:
   - protocol: TCP
     port: 5000
