@@ -15,7 +15,7 @@ pipeline {
       }
     }
 
-    stage('Build image') {
+    stage('Build docker image') {
       steps{
         script {
           dockerImage = docker.build dockerimagename
@@ -23,7 +23,7 @@ pipeline {
       }
     }
 
-    stage('Pushing Image') {
+    stage('Pushing docker Image') {
       environment {
                registryCredential = 'gitlab-credentials'
            }
@@ -36,10 +36,10 @@ pipeline {
       }
     }
 
-    stage('Deploying React.js container to Kubernetes') {
+    stage('Deploying app to Kubernetes') {
       steps {
         script {
-          kubernetesDeploy(configs: "deployment.yaml", "service.yaml")
+          kubernetesDeploy(configs: "deployment-app.yaml", "service-app.yaml")
         }
       }
     }
