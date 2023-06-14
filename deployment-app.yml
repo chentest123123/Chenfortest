@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment 
+  namespace: deployment
+  labels:
+    app: python
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: python
+  template:
+    metadata:
+      labels:
+        app: python 
+    spec:
+      containers:
+      - name: python-app 
+        image: chenlulu/python-app:1.0.0v 
+        ports:
+        - containerPort: 5000
